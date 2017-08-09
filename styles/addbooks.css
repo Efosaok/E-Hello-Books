@@ -1,0 +1,55 @@
+.signupbtn {
+	width: 20%
+}
+
+#myModal,#myModal2 {
+  opacity :0.9;
+}
+
+.modal-header {
+  background-color: skyblue
+}
+
+.modal-content {
+  font-weight: 1px solid black;
+  font-size: 1px solid black;
+  font-family: lucida
+}
+
+.form-control  {
+  height: 50px;
+  width: 50%;
+  border : 1px solid skyblue;
+  font-size: 5px solid black;
+  font-family:lucida;
+}
+
+.form-control:hover{
+  border-bottom: 1px solid skyblue
+}
+
+form {
+  margin-top: 10%;
+  margin-left: 30%;
+}
+
+h3 {
+  margin-left: 15%;
+  color : skyblue;
+}
+
+nav:hover {
+  background-color: skyblue;
+}
+
+body {
+  background-image: url(../img/th.jpg);
+}
+
+label {
+  color:skyblue;
+}
+
+button {
+  margin-left: 10%
+}

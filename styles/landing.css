@@ -1,0 +1,152 @@
+body {
+	background-size: 100% 100%;
+    background:url(../img/landing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: lucida;
+}
+
+h2 {
+	margin-top: 2%;
+	font-size: 50px;
+	color:white;
+}
+
+.buttons{
+	margin-top: 10%;
+	margin-left: 30%
+}
+
+nav {
+  margin-left: 80%;
+  margin-top: 1%;
+  color: white;
+  font-size :20px;
+}
+
+.signup,.login {
+	width: 30%;
+	height: 15%;
+	color: white;
+}
+
+.signup {
+    opacity: 0.4;
+    color:black;
+}
+
+.reg {
+    opacity: 0.8;
+    margin-left: 25%
+}
+
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin-top:5%;
+  font-size: 50px;
+  font-weight: 20px;
+  color: white
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fades {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 3.0s;
+  animation-name: fade;
+  animation-duration: 2.0s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+/* Set a style for all buttons *
+
+/* Extra styles for the cancel button */
+.signupbtn {
+	width: 20%
+}
+
+#myModal,#myModal2 {
+  opacity :0.9;
+}
+
+.modal-header {
+  background-color: skyblue
+}
+
+.modal-content {
+  font-weight: 1px solid black;
+  font-size: 1px solid black;
+  font-family: lucida
+}
+
+
+.form-control  {
+  height: 15%;
+  width: 80%;
+  border : 1px solid skyblue;
+  font-size: 1px solid black;
+  font-family:lucida;
+}
+.form-control:hover{
+  border-bottom: 1px solid skyblue
+}
+
+form{
+  margin-left: 10%
+}
+.form-image {
+  border-bottom: 10%
+}

@@ -1,0 +1,59 @@
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+.thumbnail img {
+    width: 65%;
+    height: 65%;
+    margin-bottom: 10px;
+}
+
+.books {
+	margin-top: 7%;
+}
+
+nav {
+    background-color: skyblue
+    opacity: 0.9;
+    position: fixed
+}
+nav:hover {
+    background-color: skyblue
+
+}
+
+.modal-header {
+  background-color: skyblue
+}
+
+.modal-content {
+  font-weight: 1px solid black;
+  font-size: 1px solid black;
+  font-family: lucida
+}
+
+.card-img-top {
+    margin-left: 10%
+}
+
+.btn-group {
+    width : 49.5%
+}
+
+footer {
+    background-color: black;
+    width:146%;
+    height: 55px;
+    color :white;
+    margin-left: -44%;
+}
+
+.footer-content {
+	margin-left: 25%;
+}
+
+.dropdown-menu {
+    background-color: skyblue;
+}

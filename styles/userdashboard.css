@@ -1,0 +1,82 @@
+nav {
+    background-color: skyblue
+    opacity: 0.9;
+    position: fixed
+}
+nav:hover {
+    background-color: skyblue
+}
+
+.sideinfo {
+    width:20%;
+    margin-top: 3%;
+    border-right :3px solid skyblue;
+    height: 89.5%;
+    opacity: 0.8;
+    position: fixed;
+    border-bottom: 3px solid skyblue;
+}
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+.thumbnail img {
+    width: 65%;
+    height: 65%;
+    margin-bottom: 10px;
+}
+
+.books {
+    margin-top: 12%;
+    margin-left: 28%;
+}
+
+.side-message {
+    margin-top: -2%;
+}
+
+h3 {
+    color : skyblue;
+}
+
+.card-img-top {
+    margin-left: 10%
+}
+
+.btn-group {
+    width : 49.5%
+}
+
+.card-text{
+    margin-left: 5%;
+    margin-top: 2%
+}
+
+.modal-header {
+  background-color: skyblue
+}
+
+.modal-content {
+  font-weight: 1px solid black;
+  font-size: 1px solid black;
+  font-family: lucida
+}
+
+.info {
+    font-size: 100px;
+    font-family: lucida;
+    color :skyblue;
+    margin-bottom: -5%;
+}
+
+footer {
+    background-color: black;
+    width:147%;
+    height: 100px;
+    color :white;
+    margin-left: -44%;
+}
+
