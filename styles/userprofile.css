@@ -1,0 +1,113 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin-left: 2%;
+}
+
+.profile {
+  margin-left: 32%;
+  margin-top:4%;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: skyblue;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+
+
+.thumbnail {
+    margin-top: 5%;
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+    margin-left: 10%;
+    margin-bottom: 10px;
+    width: 58%;
+    height: 59%
+}
+
+.navbar{
+  font-size: 2px
+}
+
+.card2-img-top {
+    margin-left: 10%
+}
+
+.btn-group {
+    width : 49.5%
+}
+
+.card2-text{
+    margin-left: 5%;
+    margin-top: 2%
+}
+
+.modal-header {
+  background-color: skyblue
+}
+
+.modal-content {
+  font-weight: 1px solid black;
+  font-size: 1px solid black;
+  font-family: lucida
+}
+
+
+footer {
+    background-color: black;
+    width:145%;
+    height :50px;
+    color :white;
+    margin-left: -44%;
+    margin-top: 10%;
+}
+
+.footer-content {
+    margin-left: 22%
+}
+
+#borrow-history {
+  width:70%;
+  height: 530px;
+  margin-left: 28%;
+  margin-top: -39%
+}
+
+.well {
+  width: 100%;
+  height: 530px;
+}
+
+table {
+  width: 50%;
+  height :20px;
+}
+
+nav:hover {
+  background-color: skyblue
+}
