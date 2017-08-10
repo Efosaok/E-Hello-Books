@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV || 'production';
 import configure from '../config/config'
 const config = configure[env];
 const db = {};
-console.log(config)
+console.log(configure)
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable]);
