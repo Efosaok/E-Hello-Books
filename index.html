@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./styles/landing.css">
+</head>
+<body>
+<div class="container-fluid">
+<h2 style="color: skyblue" class="text-center">Hello books</h2>
+<nav class="row">
+  <a href=""><p class="col-xs-3">About us</p></a>
+  <a href=""><p class="col-xs-3">What we do</p></a>
+  <a href=""><p class="col-xs-3">Api Docs</p></a>
+  <a href=""><p class="col-xs-3">Sponsorship</p></a>
+</nav>
+<div class="container slideshow-container">
+
+<div class="mySlides fades">
+  <div class="text-center"> <b>When you read a good book<br> somewhere in the world a door opens<br> to allow in more light<b></b></div>
+</div>
+
+<div class="mySlides fades">
+  <div class="text-center"><b>Literacy is a bridge<br> from misery to<br> hope<b></b></div>
+</div>
+
+<div class="mySlides fades">
+  <div class="text-center"><b>I have always imagined<br> that paradise will be<br> a kind of library<b></div>
+</div>
+
+</div>
+<div class="btn-group-lg buttons">
+	<button type="button" class="btn btn-default signup" data-toggle="modal" data-target="#myModal">Sign up</button>
+	<button type="button" class="btn btn-primary login" data-toggle="modal" data-target="#myModal2">Log in</button>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-group">
+          <label>First name</label>
+          <input type="text" name="surname" class="form-control" placeholder="first name"><br>
+          <label>Other name</label>
+          <input type="text" name="othername" class="form-control" placeholder="other name"><br>
+          <label>Preferred Username</label>
+          <input type="email" name="Username" class="form-control" placeholder="e.g lovelygurl"><br>
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" placeholder="efosky@gmail.com"><br>
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" placeholder="password"><br>
+          <label>Retype Password</label>
+          <input type="password" name="repassword" class="form-control" placeholder="retype pass"><br>
+          <button value="submit" class="btn btn-success reg"><a href="./pages/userdashboard.html">SIGN UP</a></button><br>
+          <p class="text-center">Already Registered? <a href=""><span data-toggle="modal" data-target="#myModal2">Login<a></span></p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Log In</h4>
+      </div>
+      <div class="modal-body">
+      <div class="form-image">
+      <img src="./img/girl-512.png" class="img-circle img-responsive ">
+      </div>
+        <form class="form-group">
+          <label>Username</label>
+          <input type="email" name="Username" class="form-control" placeholder="e.g lovelygurl"><br>
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" placeholder="password"><br>
+          <button value="submit" class="btn btn-success reg"><a href="./pages/userdashboard.html">LOG IN</a></button><br>
+          <p class="text-center">No account yet? <a href=""><span data-toggle="modal" data-target="#myModal">SignUp</span><a></p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let slideIndex = 0;
+
+const showSlides = ()=> {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex += 1
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    slides[slideIndex-1].style.display = "block";  
+    
+    setTimeout(showSlides, 6000); // Change image every 2 seconds
+}
+showSlides();
+
+let signupBtn = document.getElementsByClassName("signup");
+let btnColors = ["red","green","blue"];
+const changeBtnColor = ()=>{
+	btnColors.forEach((color)=>{
+		signupBtn.style.backgroundColor = color;
+
+	})
+	setTimeout(changeBtnColor, 3500)
+}
+changeBtnColor()
+</script>
+</body>
+</div>
+</html>
