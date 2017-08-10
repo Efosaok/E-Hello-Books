@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/bin/www",
-    "start:dev": "nodemon  ./server/bin/www.js --exec babel-node ./server/bin/www.js",
     "clean": "rm -rf ./dist",
     "build": "babel ./server/ -d ./dist",
     "test": "mocha tests/tests.js"
