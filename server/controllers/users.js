@@ -1,61 +1,55 @@
 //import our model file and require necessary dependencies
 import bcrypt from 'bcrypt'
 import Users from "../models"
-const allUsers = Users.Users
+Users.Users;
 import Books from "../models"
-const allBooks = Books.Books;
+Books.Books;
 import Borrowhistory from "../models"
-const allBorrowHistory = Borrowhistory.Borrowhistory;
+Borrowhistory.Borrowhistory;
 
-//export app.
-export default  {
+export default{
+
 //Controller function to signup a user
 	create(req,res) {
-
-		if (req.body.password === undefined){
-			return res.status(400).send({message: 'Put in your credentials'})
+		let userCredentials = {
+			firstname: req.body.firstname,
+			othername: req.body.othername,
+			username: req.body.username,
+			email: req.body.email,
+			password: hash
 		}
-
-//use bcrypt to auto-generate a salt and then store the hash in the DB
 		bcrypt.hash(req.body.password, 10, (err,hash)=>{
 			if(err) throw err.message
-			return allUsers
-			.create({
-				firstname: req.body.firstname,
-				othername: req.body.othername,
-				username: req.body.username,
-				email: req.body.email,
-				password: hash
-			})
-			.then(users => res.status(201).send(users))
-			.catch(error => res.status(503).send(error.message))
+			return Users
+			.create(userCredentials)
+			.then(users => res.status(200).send(users))
+			.catch(error => res.status(400).send(error.message))
 		})
 	},
 
 //Controller function to signin a user
 	signin(req,res) {
-		return allUsers
+		return Users
 		.findOne({
 			where : {
 				username: req.body.username
 			}
 		})
 		.then((users)=>{
-//Using the bcrypt module to compare paswords and return the appropriate response
 			bcrypt.compare(req.body.password, users.password, (err,response)=>{
 				if(response) {
-					res.status(200).send({message: 'You have successfully signed in'}, users)
+					res.status(200).send(users)
 				}else{
-					res.status(400).send('Hey,your password is incorrect')
+					res.status(400).send('invalid username or password')
 				}
 			})
 		})
-		.catch(error => res.status(500).send(error.message))
+		.catch(error => res.status(400).send(error, {message: 'invalid username or password'}))
 	},
 
 //Controller function to get all users in the DB
 	allUsers(req,res) {
-		return allUsers
+		return Users
 		.findAll()
 		.then(users => res.status(200).send(users))
 		.catch(error => res.status(400).send(error))
@@ -63,98 +57,57 @@ export default  {
 
 //Controller function to enable user borrow a book
 	borrowBook(req,res) {
-		return allBorrowHistory
-		.findAll({
-			where: {
-				userid:req.params.userid,
-				bookid:req.body.bookid,
-				returned:false
-			}
-		})
-		.then(user => res.status(200).send('you cannot borrow book again'))
-		.catch(error => res.status(500).send(error.message))
-
-		return allBorrowHistory
-		.create({
-			userid: req.params.userid,
-			bookid: req.body.bookid,
-			returned: false
-		})
-		.then(borrow => res.status(200).send({message:'You have successfully borrowed'}, borrow))
-	},
-
-//Controller function to enable user return a book
-	returnBook(req,res) {
-		return allBorrowHistory
+		return Borrowhistory
 		.create({
 			userid: req.params.userid,
 			bookid: req.body.id,
-			returned: true
+			returned: false
 		})
 		.then(borrowed => res.status(200).send(borrowed))
 		.catch(error => res.status(400).send(error.message))
 	},
 
+//Controller function to enable user return a book
+	returnBook(req,res) {
+		let returningUser = {
+			returned : true
+		}
+		return Borrowhistory
+		.update(returningUser, {where: {bookid: req.body.id, userid:req.params.userid}})
+		.then(returned => res.status(200).send(returned))
+		.catch(error => res.status(400).send(error.message))
+	},
+
 //controller function to get user Borrowing History
 	getHistory(req,res) {
-//First of all check if the user is querying for returned books 
-//or not
-		if(req.query.returned !== 'false'){
-			return allBorrowHistory
-			.findAll({
-				where:{
-					userid : req.params.userid
-				}
-			})
-			.then(history => res.status(200).send(history))
-			.catch(error => res.status(400).send(error.message))
-		}
-
-//if the user is querying for unreturned books
-//magic happens here
-		if (req.query.returned === 'false'){
-			console.log('working')
-			return allBorrowHistory
-			.findAll({
-				where: {
-			 	userid: req.params.userid,
-			 	returned: false
+		return Borrowhistory
+		.findAll({
+			where:{
+				userid : req.params.userid
 			}
 		})
-		.then((result)=>{
-			if(!result){
-				res.status(400).send({message: "No records found"})
-			}else{
-				res.status(200).send(result)
-			}
-		})
-		.catch(error => res.status(500).send(error.message))
-		}
-
+		.then(history => res.status(200).send(history))
+		.catch(error => res.status(400).send(error.message))
 	},
-/* 
-the route below are not specified but necessary
-for full app functionality
-*/
+
 //Controller function to get all DB borrow history
 	allHistory(req,res) {
-		return allBorrowHistory
+		return Borrowhistory
 		.findAll()
 		.then(history => res.send(history))
 		.catch(error => res.status(400).send(error.message))
-	}
+	},
 
 //Controller function to get a user's unreturned Books
-	/*unreturnedBooks(req,res) {
-		console.log('working')
-		return allBorrowHistory
+	unreturnedBooks(req,res) {
+		return Borrowhistory
 		.findAll({
 			where: {
 			 userid: req.params.userid,
 			 returned: false
 			}
 		})
-		.then(result => res.status(200).send(result))
+		.then(unreturned => res.send(unreturned))
 		.catch(error => res.status(400).send(error.message))
-	}*/
+	}
 }

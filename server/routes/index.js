@@ -13,7 +13,7 @@ export default (app) => {
 
   app.put('/api/books/:bookid', bookController.modifyBook);
 
-    app.get('/api/users', usersController.allUsers);
+  app.get('/api/users', usersController.allUsers);
 
   app.post('/api/users/signup', usersController.create);
 
@@ -23,7 +23,7 @@ export default (app) => {
 
   app.put('/api/users/:userid/books', usersController.returnBook);
 
-  app.get('/api/users/:userid/books', usersController.getHistory);
+  app.get('/api/users/:userid/books?returned=false', usersController.getHistory);
 
   app.get('/api/history', usersController.allHistory);
 };
