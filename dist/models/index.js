@@ -31,7 +31,7 @@ require('dotenv').config;
 _dotenv2.default.config();
 
 var basename = _path2.default.basename(module.filename);
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 
 var config = _config2.default[env];
 var db = {};
