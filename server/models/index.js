@@ -4,12 +4,11 @@ import fs from 'fs'
 import path from 'path'
 import Sequelize from 'sequelize'
 const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'production';
 import configure from '../config/config'
 const config = configure[env];
-console.log(config)
 const db = {};
-
+console.log(config)
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable]);

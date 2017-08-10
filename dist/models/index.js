@@ -29,12 +29,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 require('dotenv').config;
 
 var basename = _path2.default.basename(module.filename);
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 
 var config = _config2.default[env];
-console.log(config);
 var db = {};
-
+console.log(config);
 var sequelize = void 0;
 if (config.use_env_variable) {
   sequelize = new _sequelize2.default(process.env[config.use_env_variable]);
