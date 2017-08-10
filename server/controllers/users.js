@@ -44,18 +44,17 @@ export default{
 				username: req.body.username
 			}
 		})
-		.then((user)=>{
+		.then((users)=>{
 			bcrypt.compare(req.body.password, users.password, (err,response)=>{
-				if(response) {
-					const token = jwt.sign({
-					userId : user.id
-						}, secret, {
-							expiresIn: '10h'
-					});
-
-				res.status(201).send({message: 'Sign up sucessful', token, user });
+				if(response) { 
+					const userToken = jwt.sign({
+						userId : users.id
+					}, secret, {
+						expiresIn: '10h'
+					})
+					res.status(200).send({mesage: 'you have signed in', userToken, users})
 				}else{
-					res.status(400).send({message: 'Your Password is Incorrect'})
+					res.send('invalid password')
 				}
 			})
 		})

@@ -12,6 +12,10 @@ var _books = require('../controllers/books');
 
 var _books2 = _interopRequireDefault(_books);
 
+var _auth = require('../authorization/auth');
+
+var _auth2 = _interopRequireDefault(_auth);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (app) {
@@ -21,9 +25,10 @@ exports.default = function (app) {
     });
   });
 
-  app.post('/api/books', _books2.default.addBook);
+  //route for admin to borrow book
+  app.post('/api/books', _auth2.default.verifyToken, _books2.default.addBook);
 
-  app.get('/api/books', _books2.default.getAvailableBooks);
+  app.get('/api/allbooks', _auth2.default.verifyToken, _books2.default.getAvailableBooks);
 
   app.put('/api/books/:bookid', _books2.default.modifyBook);
 

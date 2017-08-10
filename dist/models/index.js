@@ -32,6 +32,7 @@ var basename = _path2.default.basename(module.filename);
 var env = process.env.NODE_ENV || 'development';
 
 var config = _config2.default[env];
+console.log(config);
 var db = {};
 
 var sequelize = void 0;

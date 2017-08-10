@@ -62,15 +62,19 @@ exports.default = {
 		}).then(function (users) {
 			_bcrypt2.default.compare(req.body.password, users.password, function (err, response) {
 				if (response) {
-					res.status(200).send(users);
+					var userToken = _jsonwebtoken2.default.sign({
+						userId: users.id
+					}, secret, {
+						expiresIn: '10h'
+					});
+					res.status(200).send({ mesage: 'you have signed in', userToken: userToken, users: users });
 				} else {
-					res.status(400).send('invalid username or password');
+					res.send('invalid password');
 				}
 			});
 		}).catch(function (error) {
 			return res.status(400).send(error, { message: 'invalid username or password' });
 		});
-		loggedInUsers.push(req.body.firstname);
 	},
 
 

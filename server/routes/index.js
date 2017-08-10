@@ -10,9 +10,9 @@ export default (app) => {
   }));
 
 //route for admin to borrow book
-  app.post('/api/books', bookController.addBook);
+  app.post('/api/books',auth.verifyToken, bookController.addBook);
 
-  app.get('/api/books', bookController.getAvailableBooks);
+  app.get('/api/allbooks',auth.verifyToken, bookController.getAvailableBooks);
 
   app.put('/api/books/:bookid', bookController.modifyBook);
 

@@ -7,6 +7,7 @@ const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 import configure from '../config/config'
 const config = configure[env];
+console.log(config)
 const db = {};
 
 let sequelize;

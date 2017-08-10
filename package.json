@@ -9,6 +9,10 @@
     "build": "babel ./server/ -d ./dist",
     "test": "mocha tests/tests.js"
   },
+  "engines":{
+    "npm":"3.10.x",
+    "node":"6.11.x"
+  },
   "author": "Efosa Okpugie",
   "license": "ISC",
   "dependencies": {
