@@ -49,7 +49,7 @@ app.use(_bodyParser2.default.urlencoded({ extended: false }));
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 
 (0, _routes2.default)(app);
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
   return res.status(200).send({
     message: 'Welcome to the beginning of nothingness.'
   });
