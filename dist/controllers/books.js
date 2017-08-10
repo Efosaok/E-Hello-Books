@@ -11,6 +11,7 @@ var _models2 = _interopRequireDefault(_models);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AllBooks = _models2.default.Books;
+var allUsers = _models2.default.Users;
 
 exports.default = {
 	//admin adding books to database controller

@@ -1,5 +1,6 @@
 import Books from "../models"
 const AllBooks = Books.Books;
+const allUsers = Books.Users
 
 export default  {
 //admin adding books to database controller

@@ -24,6 +24,8 @@ var allBooks = _models2.default.Books;
 
 var allBorrowhistory = _models2.default.Borrowhistory;
 
+var secret = process.env.SECRET;
+
 exports.default = {
 
 	//Controller function to signup a user
@@ -35,8 +37,15 @@ exports.default = {
 				username: req.body.username,
 				email: req.body.email,
 				password: hash
-			}).then(function (users) {
-				return res.status(200).send(users);
+			})
+			// .then((users)=> res.status(200).send({message: "You have successfully signed up"}users))
+			.then(function (user) {
+				var token = _jsonwebtoken2.default.sign({
+					userId: user.id
+				}, secret, {
+					expiresIn: '10h'
+				});
+				res.status(201).send({ message: 'Sign up sucessful', token: token, user: user });
 			}).catch(function (error) {
 				return res.status(400).send(error.message);
 			});

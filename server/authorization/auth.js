@@ -1,9 +1,9 @@
-/*var authorize = function(req, res, next) {
- var token = req.body.token || req.headers[‘x-access-token’];
+const authorize = (req, res, next)=> {
+ const token = req.headers.authorization || req.headers['x-access-token'];
   if (token) {
-   jwt.verify(token, 'secret', function(err, decoded) {
+   jwt.verify(token, 'secret', (err, decoded)=> {
       if (err) {
-         console.error(‘JWT Verification Error’, err);
+         console.error('JWT Verification Error', err);
          return res.status(403).send(err);
       } else {
          req.decoded = decoded;
@@ -11,8 +11,8 @@
       }
    });
   } else {
-   res.status(403).send(‘Token not provided’);
+   res.status(403).send('Token not provided');
    }
 }
 
-exports.authorize = authorize*/
+exports.authorize = authorize

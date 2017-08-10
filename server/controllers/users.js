@@ -8,6 +8,8 @@ const allBooks =Books.Books;
 import Borrowhistory from "../models"
 const allBorrowhistory = Borrowhistory.Borrowhistory;
 
+const secret = process.env.SECRET;
+
 export default{
 
 //Controller function to signup a user
@@ -21,7 +23,15 @@ export default{
 			email: req.body.email,
 			password: hash
 		})
-			.then((users)=> res.status(200).send(users))
+			// .then((users)=> res.status(200).send({message: "You have successfully signed up"}users))
+			.then((user) => {
+				const token = jwt.sign({
+					userId : user.id
+				}, secret, {
+					expiresIn: '10h'
+				});
+				res.status(201).send({message: 'Sign up sucessful', token, user });
+			})
 			.catch(error => res.status(400).send(error.message))
 		})
 	},
@@ -34,17 +44,22 @@ export default{
 				username: req.body.username
 			}
 		})
-		.then((users)=>{
+		.then((user)=>{
 			bcrypt.compare(req.body.password, users.password, (err,response)=>{
 				if(response) {
-					res.status(200).send(users)
+					const token = jwt.sign({
+					userId : user.id
+						}, secret, {
+							expiresIn: '10h'
+					});
+
+				res.status(201).send({message: 'Sign up sucessful', token, user });
 				}else{
-					res.status(400).send('invalid username or password')
+					res.status(400).send({message: 'Your Password is Incorrect'})
 				}
 			})
 		})
 		.catch(error => res.status(400).send(error, {message: 'invalid username or password'}))
-		loggedInUsers.push(req.body.firstname)
 	},
 
 //Controller function to get all users in the DB
