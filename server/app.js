@@ -1,3 +1,4 @@
+//import all necesary dependencies
 require('dotenv').config();
 import express from 'express'
 import logger from 'morgan'

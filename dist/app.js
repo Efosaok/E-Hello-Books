@@ -30,6 +30,7 @@ var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import all necesary dependencies
 require('dotenv').config();
 
 
@@ -54,4 +55,4 @@ app.get('*', function (req, res) {
   });
 });
 
-module.exports = app;
+exports.default = app;
