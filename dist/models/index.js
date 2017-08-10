@@ -33,7 +33,7 @@ var env = process.env.NODE_ENV || 'production';
 
 var config = _config2.default[env];
 var db = {};
-console.log(_config2.default);
+console.log(config);
 var sequelize = void 0;
 if (config.use_env_variable) {
   sequelize = new _sequelize2.default(process.env[config.use_env_variable]);
