@@ -1,10 +1,11 @@
+require('dotenv').config
 import dotenv from 'dotenv'
 dotenv.config()
 import fs from 'fs'
 import path from 'path'
 import Sequelize from 'sequelize'
 const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'test';
 import configure from '../config/config'
 const config = configure[env];
 const db = {};

@@ -1,35 +1,34 @@
 //import our model file and require necessary dependencies
+import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import Users from "../models"
-Users.Users;
+const allUsers = Users.Users;
 import Books from "../models"
-Books.Books;
+const allBooks =Books.Books;
 import Borrowhistory from "../models"
-Borrowhistory.Borrowhistory;
+const allBorrowhistory = Borrowhistory.Borrowhistory;
 
 export default{
 
 //Controller function to signup a user
 	create(req,res) {
-		let userCredentials = {
+		bcrypt.hash(req.body.password, 10, (err,hash)=>{
+			return allUsers
+			.create({
 			firstname: req.body.firstname,
 			othername: req.body.othername,
 			username: req.body.username,
 			email: req.body.email,
 			password: hash
-		}
-		bcrypt.hash(req.body.password, 10, (err,hash)=>{
-			if(err) throw err.message
-			return Users
-			.create(userCredentials)
-			.then(users => res.status(200).send(users))
+		})
+			.then((users)=> res.status(200).send(users))
 			.catch(error => res.status(400).send(error.message))
 		})
 	},
 
 //Controller function to signin a user
 	signin(req,res) {
-		return Users
+		return allUsers
 		.findOne({
 			where : {
 				username: req.body.username
@@ -45,11 +44,12 @@ export default{
 			})
 		})
 		.catch(error => res.status(400).send(error, {message: 'invalid username or password'}))
+		loggedInUsers.push(req.body.firstname)
 	},
 
 //Controller function to get all users in the DB
 	allUsers(req,res) {
-		return Users
+		return allUsers
 		.findAll()
 		.then(users => res.status(200).send(users))
 		.catch(error => res.status(400).send(error))
@@ -57,7 +57,7 @@ export default{
 
 //Controller function to enable user borrow a book
 	borrowBook(req,res) {
-		return Borrowhistory
+		return allBorrowhistory
 		.create({
 			userid: req.params.userid,
 			bookid: req.body.id,
@@ -72,7 +72,7 @@ export default{
 		let returningUser = {
 			returned : true
 		}
-		return Borrowhistory
+		return allBorrowhistory
 		.update(returningUser, {where: {bookid: req.body.id, userid:req.params.userid}})
 		.then(returned => res.status(200).send(returned))
 		.catch(error => res.status(400).send(error.message))
@@ -80,7 +80,7 @@ export default{
 
 //controller function to get user Borrowing History
 	getHistory(req,res) {
-		return Borrowhistory
+		return allBorrowhistory
 		.findAll({
 			where:{
 				userid : req.params.userid
@@ -92,7 +92,7 @@ export default{
 
 //Controller function to get all DB borrow history
 	allHistory(req,res) {
-		return Borrowhistory
+		return allBorrowhistory
 		.findAll()
 		.then(history => res.send(history))
 		.catch(error => res.status(400).send(error.message))
@@ -100,7 +100,7 @@ export default{
 
 //Controller function to get a user's unreturned Books
 	unreturnedBooks(req,res) {
-		return Borrowhistory
+		return allBorrowhistory
 		.findAll({
 			where: {
 			 userid: req.params.userid,
